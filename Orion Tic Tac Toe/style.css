@@ -12,11 +12,24 @@ body{
 		#FFCC70 100%);
 	background-repeat: no-repeat;
 }
+#Title {
+	text-align: center;
+	color:aliceblue;
+	/*
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	justify-items: center; */
+	margin-left: auto;
+	margin-right: auto;
+	width: fit-content;
+	background-color: rgba(255, 255, 255, 0.042);
+}
 
 .table{
 	display: grid;
 	width: 100vw;
-	height: 100vh;
+	height: 50vh;
 	display: grid;
 	justify-content: center;
 	align-content: center;
@@ -28,7 +41,7 @@ body{
 .cell{
 	width: 100px;
 	height: 100px;
-	border: 4px solid black;
+	border: 4px solid white;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -36,5 +49,5 @@ body{
 
 
 /* canvas{
-	border: 2px solid #000;
+	border: 2px solid white;
 } */
