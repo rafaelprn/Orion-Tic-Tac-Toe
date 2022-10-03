@@ -1,9 +1,8 @@
 ## Até o momento:
 - grid funcional
 - alterna entre players
-- botão para limpar o grid
+- botão para limpar o grid (restart)
 
 ## a fazer:
-- restart
 - lockar grid
 - checkWinner
