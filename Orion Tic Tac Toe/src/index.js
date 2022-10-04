@@ -16,7 +16,7 @@ const winPositions = [
   [1, 4, 7],
   [6, 7, 8]
 ]
-let winNum= winPositions.length
+let winNum = winPositions.length
 
 //cada jogador tem um vetor com as posicoes preenchidas
 //checo o vetor do player com o vetor winPositions para comparar os arrays
@@ -37,13 +37,13 @@ function play(id) {
     else{
       p2Positions.push(cell.id)
     }
-    //console.log(`X array:${p1Positions} O array:${p2Positions}`)
-    checkWinner(checkRound)
+    console.log(`X array:${p1Positions} O array:${p2Positions}`)
+    checkWinner(round)
     checkRound = !checkRound; //inverte o estado o checkRound pra passar o player
   }
 }
-function checkWinner(checkRound){
-  if(checkRound){//se foi turno do X
+function checkWinner(round){
+  if(round){//se foi turno do X
     for(let i = 0; i <= winNum; i++){
       let winner = p1Positions.includes(winPositions[i])
       if(winner){
@@ -60,6 +60,12 @@ function checkWinner(checkRound){
         return
       }
     }
+  }
+}
+
+function isWinner(pPosition){
+  for(let i = 0; i < winPositions.length; i++){
+    
   }
 }
 
