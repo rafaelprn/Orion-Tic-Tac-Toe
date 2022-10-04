@@ -37,39 +37,30 @@ function play(id) {
     text[0].textContent = "Vez de: " + round;
     if (checkRound) {
       //se for true, se for vez do X
-      p1Positions.push(cell.id);
+      p1Positions.push(parseInt(cell.id));
     } else {
-      p2Positions.push(cell.id);
+      p2Positions.push(parseInt(cell.id));
     }
-    console.log(`X array:${p1Positions} O array:${p2Positions}`);
+    console.log(p1Positions);
+    console.log(p2Positions);
     checkWinner(round);
     checkRound = !checkRound; //inverte o estado o checkRound pra passar o player
   }
 }
 function checkWinner(round) {
-  if (round) {
-    //se foi turno do X
-    for (let i = 0; i <= winNum; i++) {
-      let winner = p1Positions.includes(winPositions[i]);
-      if (winner) {
-        console.log("Voce venceu!");
-        return;
-      }
-    }
-  } else {
-    //se foi turno do O
-    for (let i = 0; i <= winNum; i++) {
-      let winner = p2Positions.includes(winPositions[i]);
-      if (winner) {
-        console.log("Voce venceu!");
-        return;
-      }
-    }
-  }
+  if (round) {//se foi turno do X
+    winPositions.map((winPosition) => {
+      console.log(winPosition)
+    })
+ }
 }
 
-function isWinner(pPosition) {
-  for (let i = 0; i < winPositions.length; i++) {}
+function isWinner(element) {
+  winPositions.map( (winPosition) => 
+    winPosition.forEach( (position) => {
+      return element == position
+    })
+  )
 }
 
 function restart() {
@@ -78,6 +69,8 @@ function restart() {
     table[i].textContent = ""; //limpa tudo
   }
   checkRound = true; //reiniciar com o X
+  p1Positions = []
+  p2Positions = []
   let text = document.getElementsByClassName("game-status");
   text[0].textContent = "Vez de: X";
 }
