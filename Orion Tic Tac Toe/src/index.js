@@ -7,23 +7,22 @@ let checkRound = true;
 //cada jogador tem um vetor com as posicoes preenchidas
 //checo o vetor do player com o vetor winPositions para comparar os arrays
 document.addEventListener("click", (event) => {
-  if (event.target.matches(".cell")) {
-    //se o jogador clicou no tabuleiro
-    play(event.target.id);
+  if (event.target.matches(".cell")) { //se o jogador clicou no tabuleiro
+    play(event.target.id); //chama a funcao play com o id da celula clicada
   }
 });
 
 function play(id) {
-  const cell = document.getElementById(id);
-  round = checkRound ? player1 : player2;
-  cell.textContent = round;
-  checkRound = !checkRound;
+  const cell = document.getElementById(id); //pega o id do item clicado
+  round = checkRound ? player1 : player2; //verifica qual player de acordo com o estado de checkRound
+  cell.textContent = round; //preenche a celula com "X" ou "O"
+  checkRound = !checkRound; //inverte o estado o checkRound pra passar o player
 }
 
 function restart() {
   const table = document.getElementsByClassName("cell");
   for (let i = 0; i < table.length; i++) {
-    table[i].textContent = "";
+    table[i].textContent = ""; //limpa tudo
   }
   checkRound = true //reiniciar com o X
 }

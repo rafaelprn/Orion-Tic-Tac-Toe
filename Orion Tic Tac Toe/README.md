@@ -3,6 +3,7 @@
 - alterna entre players
 - botão para limpar o grid (restart)
 
-## a fazer:
+## A fazer:
 - lockar grid
 - checkWinner
+- estilizar inputs
