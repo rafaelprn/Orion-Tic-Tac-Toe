@@ -1,4 +1,4 @@
-const cellElements = document.querySelectorAll(".cell");
+const cellElements = document.getElementsByClassName("cell");
 const player1 = "X";
 const player2 = "O";
 //rounds: X = true / O = false
@@ -33,49 +33,42 @@ function play(id) {
     //so vai preencher a celula se ela estiver vazia
     round = checkRound ? player1 : player2; //verifica qual player de acordo com o estado de checkRound
     cell.textContent = round; //preenche a celula com "X" ou "O"
+    cell.classList.add(round)
     let text = document.getElementsByClassName("game-status");
     text[0].textContent = "Vez de: " + round;
     if (checkRound) {
       //se for true, se for vez do X
-      p1Positions.push(cell.id);
+      p1Positions.push(parseInt(cell.id));
     } else {
-      p2Positions.push(cell.id);
+      p2Positions.push(parseInt(cell.id));
     }
-    console.log(`X array:${p1Positions} O array:${p2Positions}`);
-    checkWinner(round);
+    isWinner()
     checkRound = !checkRound; //inverte o estado o checkRound pra passar o player
   }
 }
-function checkWinner(round) {
-  if (round) {
-    //se foi turno do X
-    for (let i = 0; i <= winNum; i++) {
-      let winner = p1Positions.includes(winPositions[i]);
-      if (winner) {
-        console.log("Voce venceu!");
-        return;
-      }
-    }
-  } else {
-    //se foi turno do O
-    for (let i = 0; i <= winNum; i++) {
-      let winner = p2Positions.includes(winPositions[i]);
-      if (winner) {
-        console.log("Voce venceu!");
-        return;
-      }
-    }
-  }
-}
 
-function isWinner(pPosition) {
-  for (let i = 0; i < winPositions.length; i++) {}
+function isWinner() {
+  const winner = winPositions.some((combnation)=>{
+    return combnation.every((index) => {
+      return cellElements[index].classList.contains(checkRound ? "X" : "O")
+    })
+  })
+  if(winner && checkRound){
+    console.log(`X venceu`)
+  }
+  else if(winner && !checkRound){
+    console.log(`O venceu`)
+  }
+  return winner
 }
 
 function restart() {
   const table = document.getElementsByClassName("cell");
   for (let i = 0; i < table.length; i++) {
     table[i].textContent = ""; //limpa tudo
+    table[i].classList.remove("X")
+    table[i].classList.remove("O")
+
   }
   checkRound = true; //reiniciar com o X
   let text = document.getElementsByClassName("game-status");
