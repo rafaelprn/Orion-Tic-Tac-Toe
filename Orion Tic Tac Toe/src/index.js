@@ -14,9 +14,11 @@ document.addEventListener("click", (event) => {
 
 function play(id) {
   const cell = document.getElementById(id); //pega o id do item clicado
-  round = checkRound ? player1 : player2; //verifica qual player de acordo com o estado de checkRound
-  cell.textContent = round; //preenche a celula com "X" ou "O"
-  checkRound = !checkRound; //inverte o estado o checkRound pra passar o player
+  if(cell.textContent === ""){
+    round = checkRound ? player1 : player2; //verifica qual player de acordo com o estado de checkRound
+    cell.textContent = round; //preenche a celula com "X" ou "O"
+    checkRound = !checkRound; //inverte o estado o checkRound pra passar o player
+  }
 }
 
 function restart() {
