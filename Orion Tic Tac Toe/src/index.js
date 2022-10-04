@@ -1,6 +1,7 @@
 const cellElements = document.getElementsByClassName("cell");
 const player1 = "X";
 const player2 = "O";
+let text = document.getElementsByClassName("game-status");
 //rounds: X = true / O = false
 let checkRound = true;
 let p1Positions = [];
@@ -33,44 +34,56 @@ function play(id) {
     //so vai preencher a celula se ela estiver vazia
     round = checkRound ? player1 : player2; //verifica qual player de acordo com o estado de checkRound
     cell.textContent = round; //preenche a celula com "X" ou "O"
-    cell.classList.add(round)
-    let text = document.getElementsByClassName("game-status");
-    text[0].textContent = "Vez de: " + round;
+    cell.classList.add(round);
+    if (!checkRound) {
+      text[0].textContent = "Vez de: X";
+    }
+    if (checkRound) {
+      text[0].textContent = "Vez de: O";
+    }
     if (checkRound) {
       //se for true, se for vez do X
       p1Positions.push(parseInt(cell.id));
     } else {
       p2Positions.push(parseInt(cell.id));
     }
-    isWinner()
+    isWinner();
     checkRound = !checkRound; //inverte o estado o checkRound pra passar o player
   }
 }
 
 function isWinner() {
-  const winner = winPositions.some((combnation)=>{
+  const winner = winPositions.some((combnation) => {
     return combnation.every((index) => {
-      return cellElements[index].classList.contains(checkRound ? "X" : "O")
-    })
-  })
-  if(winner && checkRound){
-    console.log(`X venceu`)
+      return cellElements[index].classList.contains(checkRound ? "X" : "O");
+    });
+  });
+  if (winner && checkRound) {
+    text[0].textContent = "X venceu!";
+    lockGrid();
+  } else if (winner && !checkRound) {
+    lockGrid();
+    text[0].textContent = "O venceu!";
   }
-  else if(winner && !checkRound){
-    console.log(`O venceu`)
-  }
-  return winner
+  return winner;
+}
+
+function lockGrid() {
+  document.getElementById("table").style.pointerEvents = "none";
+}
+
+function unlockgrid() {
+  document.getElementById("table").style.pointerEvents = "auto";
 }
 
 function restart() {
   const table = document.getElementsByClassName("cell");
   for (let i = 0; i < table.length; i++) {
     table[i].textContent = ""; //limpa tudo
-    table[i].classList.remove("X")
-    table[i].classList.remove("O")
-
+    table[i].classList.remove("X");
+    table[i].classList.remove("O");
   }
   checkRound = true; //reiniciar com o X
-  let text = document.getElementsByClassName("game-status");
   text[0].textContent = "Vez de: X";
+  unlockgrid();
 }
