@@ -25,6 +25,7 @@ function restart() {
   for (let i = 0; i < table.length; i++) {
     table[i].textContent = "";
   }
+  checkRound = true //reiniciar com o X
 }
 
 //posições vencedoras
