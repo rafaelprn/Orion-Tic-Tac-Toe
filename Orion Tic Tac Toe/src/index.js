@@ -41,13 +41,13 @@ function play(id) {
     } else {
       p2Positions.push(cell.id);
     }
-    //console.log(`X array:${p1Positions} O array:${p2Positions}`)
-    checkWinner(checkRound);
+    console.log(`X array:${p1Positions} O array:${p2Positions}`);
+    checkWinner(round);
     checkRound = !checkRound; //inverte o estado o checkRound pra passar o player
   }
 }
-function checkWinner(checkRound) {
-  if (checkRound) {
+function checkWinner(round) {
+  if (round) {
     //se foi turno do X
     for (let i = 0; i <= winNum; i++) {
       let winner = p1Positions.includes(winPositions[i]);
@@ -66,6 +66,10 @@ function checkWinner(checkRound) {
       }
     }
   }
+}
+
+function isWinner(pPosition) {
+  for (let i = 0; i < winPositions.length; i++) {}
 }
 
 function restart() {
