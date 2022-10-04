@@ -17,7 +17,6 @@ const winPositions = [
   [1, 4, 7],
   [6, 7, 8],
 ];
-let winNum = winPositions.length;
 
 //cada jogador tem um vetor com as posicoes preenchidas
 //checo o vetor do player com o vetor winPositions para comparar os arrays
@@ -48,13 +47,19 @@ function play(id) {
       p2Positions.push(parseInt(cell.id));
     }
     isWinner();
+
+    const isDraw = checkDraw();
+    if(isDraw){
+      text[0].textContent = "Deu Velha!"
+      lockGrid();
+    }
     checkRound = !checkRound; //inverte o estado o checkRound pra passar o player
   }
 }
 
 function isWinner() {
-  const winner = winPositions.some((combnation) => {
-    return combnation.every((index) => {
+  const winner = winPositions.some((combination) => {
+    return combination.every((index) => {
       return cellElements[index].classList.contains(checkRound ? "X" : "O");
     });
   });
@@ -74,6 +79,12 @@ function lockGrid() {
 
 function unlockgrid() {
   document.getElementById("table").style.pointerEvents = "auto";
+}
+
+const checkDraw = () => {
+  return [...cellElements].every((cell) => {
+    return cell.classList.contains("X") || cell.classList.contains("O")
+  })
 }
 
 function restart() {
