@@ -25,7 +25,7 @@ document.addEventListener("click", (event) => {
     //se o jogador clicou no tabuleiro
     play(event.target.id); //chama a funcao play com o id da celula clicada
   }
-});
+}); 
 
 function play(id) {
   const cell = document.getElementById(id); //pega o id do item clicado
