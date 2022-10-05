@@ -16,7 +16,7 @@ const winPositions = [
   [2, 5, 8],
   [1, 4, 7],
   [6, 7, 8],
-];
+]; 
 
 //cada jogador tem um vetor com as posicoes preenchidas
 //checo o vetor do player com o vetor winPositions para comparar os arrays
