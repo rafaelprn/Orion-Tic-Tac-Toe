@@ -57,7 +57,7 @@ function play(id) {
   }
 }
 
-function isWinner() {
+function isWinner() { //verifica o vencedor
   const winner = winPositions.some((combination) => {
     return combination.every((index) => {
       return cellElements[index].classList.contains(checkRound ? "X" : "O");
