@@ -14,7 +14,7 @@ main{
 	align-items: center;
 	flex-direction: column;
 }
-body{
+body{ /* gradient in background */
 	width: 100vw;
 	height: 100vh;
 	background-color: #4158D0;
