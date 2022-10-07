@@ -49,7 +49,7 @@ function play(id) {
     isWinner();
 
     const isDraw = checkDraw();
-    if(isDraw){
+    if(isDraw){ //se deu empate
       text[0].textContent = "Deu Velha!"
       lockGrid();
     }
